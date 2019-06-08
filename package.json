@@ -1,0 +1,25 @@
+{
+  "name": "node-red-contrib-gree-hvac",
+  "version": "0.0.1",
+  "description": "A Node-RED integration for controlling Gree smart air conditioners",
+  "author": "Igor Starovierov <igor.decler@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "node-red",
+    "gree",
+    "hvac"
+  ],
+  "node-red": {
+    "nodes": {
+      "gree-hvac": "gree-hvac/gree-hvac.js",
+      "gree-hvac-config": "gree-hvac/gree-hvac-config.js"
+    }
+  },
+  "dependencies": {
+    "gree-hvac-client": "^1.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:inwaar/node-red-contrib-gree-hvac.git"
+  }
+}
