@@ -7,16 +7,26 @@ module.exports = function (RED) {
         const device = RED.nodes.getNode(config.device);
 
         node.status({});
-        node.status({fill: 'yellow', shape: 'dot', text: 'connecting...'});
 
+        const pollingInterval = config.interval * 1000;
         let client = new Gree.Client({
             host: device.host,
-            pollingInterval: config.interval * 1000
+            pollingInterval: pollingInterval,
+            pollingTimeout: pollingInterval / 2
         });
-        client.on('connect', () => {
-            node.status({fill: 'green', shape: 'dot', text: 'connected to ' + client.getDeviceId()});
-        });
+
+        const statusConnected = () => {
+            node.status({fill: 'green', shape: 'dot', text: 'connected to ' + client.getDeviceId()})
+        };
+
+        const statusConnecting = () => node.status({fill: 'yellow', shape: 'dot', text: 'connecting...'});
+        const statusNoResponse = () => node.status({fill: 'yellow', shape: 'dot', text: 'no response...'});
+
+        statusConnecting();
+
+        client.on('connect', statusConnected);
         client.on('update', (updatedProperties, properties) => {
+            statusConnected();
             node.send([{
                 topic: 'updated',
                 payload: updatedProperties
@@ -34,9 +44,8 @@ module.exports = function (RED) {
                 payload: properties
             }]);
         });
-        client.on('error', (message) => {
-            node.status({fill: 'red', shape: 'dot', text: message});
-        });
+        client.on('disconnect', statusConnecting);
+        client.on('no_response', statusNoResponse);
 
         this.on('input', function (msg) {
             client.setProperty(msg.topic, msg.payload);
