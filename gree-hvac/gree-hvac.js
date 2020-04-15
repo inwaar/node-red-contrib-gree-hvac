@@ -12,7 +12,8 @@ module.exports = function (RED) {
         let client = new Gree.Client({
             host: device.host,
             pollingInterval: pollingInterval,
-            pollingTimeout: pollingInterval / 2
+            pollingTimeout: pollingInterval / 2,
+            debug: config.debug
         });
 
         const statusConnected = () => {
