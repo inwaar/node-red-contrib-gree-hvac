@@ -7,10 +7,10 @@ clone@^2.1.2:
   resolved "https://registry.yarnpkg.com/clone/-/clone-2.1.2.tgz#1b7f4b9f591f1e8f83670401600345a02887435f"
   integrity sha1-G39Ln1kfHo+DZwQBYANFoCiHQ18=
 
-gree-hvac-client@^1.2.6:
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/gree-hvac-client/-/gree-hvac-client-1.2.6.tgz#6d1a89e5ca570c0513ed2a6161a1cf619f0791c1"
-  integrity sha512-MQRokN/BPPCVWpLEDcmiz+3vT84Ig1U+iu11woAQfJqzCGEq7PGvPvYWjFSztDQANEyp4Oobtnyyb1eQj+N6Gw==
+gree-hvac-client@^1.2.7:
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/gree-hvac-client/-/gree-hvac-client-1.2.7.tgz#05344498bac48bd8b288bb61405274bab6372ad0"
+  integrity sha512-PSCMfzSMK9SUfqJ5e6KicyLHB+Gtdgwb/85tXumgSzwuqMKrC09Au38h10ZzciMkwMPx0aMtLk00v7byzamyJg==
   dependencies:
     clone "^2.1.2"
     object-diff "^0.0.4"
