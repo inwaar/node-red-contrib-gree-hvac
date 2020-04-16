@@ -16,7 +16,7 @@
     }
   },
   "dependencies": {
-    "gree-hvac-client": "^1.2.3"
+    "gree-hvac-client": "^1.2.6"
   },
   "repository": {
     "type": "git",
