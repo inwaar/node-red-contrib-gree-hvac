@@ -49,7 +49,10 @@ module.exports = function (RED) {
         client.on('no_response', statusNoResponse);
 
         this.on('input', function (msg) {
-            client.setProperty(msg.topic, msg.payload);
+            if (typeof msg.payload === "object")
+                client.setProperties(msg.payload);
+            else
+                client.setProperty(msg.topic, msg.payload);
         });
 
         this.on('close', function () {
