@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-gree-hvac",
-  "version": "0.1.4",
+  "version": "0.0.0-development",
   "description": "A Node-RED integration for controlling Gree smart air conditioners",
   "author": "Igor Starovierov <igor.decler@gmail.com>",
   "license": "MIT",
@@ -26,7 +26,8 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-jsdoc": "^44.1.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.8"
+    "prettier": "^2.8.8",
+    "semantic-release": "^21.0.2"
   },
   "repository": {
     "type": "git",
