@@ -15,8 +15,18 @@
       "gree-hvac-config": "gree-hvac/gree-hvac-config.js"
     }
   },
+  "scripts": {
+    "lint": "eslint ./"
+  },
   "dependencies": {
     "gree-hvac-client": "^1.2.7"
+  },
+  "devDependencies": {
+    "eslint": "^8.40.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-jsdoc": "^44.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.8"
   },
   "repository": {
     "type": "git",

@@ -1,6 +1,9 @@
 const Gree = require('gree-hvac-client');
 
 module.exports = function (RED) {
+    /**
+     * @param config
+     */
     function GreeHvacNode(config) {
         RED.nodes.createNode(this, config);
         const node = this;
@@ -13,46 +16,65 @@ module.exports = function (RED) {
             host: device.host,
             pollingInterval: pollingInterval,
             pollingTimeout: pollingInterval / 2,
-            debug: config.debug
+            debug: config.debug,
         });
 
         const statusConnected = () => {
-            node.status({fill: 'green', shape: 'dot', text: 'connected to ' + client.getDeviceId()})
+            node.status({
+                fill: 'green',
+                shape: 'dot',
+                text: 'connected to ' + client.getDeviceId(),
+            });
         };
 
-        const statusConnecting = () => node.status({fill: 'yellow', shape: 'dot', text: 'connecting...'});
-        const statusNoResponse = () => node.status({fill: 'yellow', shape: 'dot', text: 'no response...'});
+        const statusConnecting = () =>
+            node.status({
+                fill: 'yellow',
+                shape: 'dot',
+                text: 'connecting...',
+            });
+        const statusNoResponse = () =>
+            node.status({
+                fill: 'yellow',
+                shape: 'dot',
+                text: 'no response...',
+            });
 
         statusConnecting();
 
         client.on('connect', statusConnected);
         client.on('update', (updatedProperties, properties) => {
             statusConnected();
-            node.send([{
-                topic: 'updated',
-                payload: updatedProperties
-            }, {
-                topic: 'properties',
-                payload: properties
-            }]);
+            node.send([
+                {
+                    topic: 'updated',
+                    payload: updatedProperties,
+                },
+                {
+                    topic: 'properties',
+                    payload: properties,
+                },
+            ]);
         });
         client.on('success', (updatedProperties, properties) => {
-            node.send([{
-                topic: 'acknowledged',
-                payload: updatedProperties
-            }, {
-                topic: 'properties',
-                payload: properties
-            }]);
+            node.send([
+                {
+                    topic: 'acknowledged',
+                    payload: updatedProperties,
+                },
+                {
+                    topic: 'properties',
+                    payload: properties,
+                },
+            ]);
         });
         client.on('disconnect', statusConnecting);
         client.on('no_response', statusNoResponse);
 
         this.on('input', function (msg) {
-            if (typeof msg.payload === "object")
+            if (typeof msg.payload === 'object')
                 client.setProperties(msg.payload);
-            else
-                client.setProperty(msg.topic, msg.payload);
+            else client.setProperty(msg.topic, msg.payload);
         });
 
         this.on('close', function () {
