@@ -1,6 +1,10 @@
 node-red-contrib-gree-hvac
 ========================
 
+![NPM status](https://img.shields.io/npm/v/node-red-contrib-gree-hvac)
+![Node-RED status](https://img.shields.io/badge/dynamic/xml?label=Node-RED%20catalog&query=%2F%2Fdiv%5B%40class%3D%27flowmeta%27%5D%5B1%5D%2Fdiv%5B%40class%3D%27flowinfo%27%5D%5B1%5D%2Ftext%28%29%5B1%5D&url=https%3A%2F%2Fflows.nodered.org%2Fnode%2Fnode-red-contrib-gree-hvac)
+![Github Actions status](https://img.shields.io/github/actions/workflow/status/inwaar/node-red-contrib-gree-hvac/release.yml?label=release)
+
 Provides a node for control Gree HVAC (Heating, ventilation, and air conditioning).
 
 Install
