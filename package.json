@@ -19,7 +19,7 @@
     "lint": "eslint ./"
   },
   "dependencies": {
-    "gree-hvac-client": "^1.2.7"
+    "gree-hvac-client": "^2.1.0"
   },
   "devDependencies": {
     "eslint": "^8.40.0",
