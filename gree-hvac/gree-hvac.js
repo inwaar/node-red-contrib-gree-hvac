@@ -26,7 +26,6 @@ module.exports = function (RED) {
                 text: 'connected to ' + client.getDeviceId(),
             });
         };
-
         const statusConnecting = () =>
             node.status({
                 fill: 'yellow',
@@ -39,8 +38,17 @@ module.exports = function (RED) {
                 shape: 'dot',
                 text: 'no response...',
             });
+        const statusError = error =>
+            node.status({ fill: 'red', shape: 'dot', text: error });
 
-        statusConnecting();
+        const onError = error => {
+            if (config.debug) {
+                console.dir(error);
+            }
+
+            node.error(error);
+            statusError(error);
+        };
 
         client.on('connect', statusConnected);
         client.on('update', (updatedProperties, properties) => {
@@ -57,6 +65,7 @@ module.exports = function (RED) {
             ]);
         });
         client.on('success', (updatedProperties, properties) => {
+            statusConnected();
             node.send([
                 {
                     topic: 'acknowledged',
@@ -70,17 +79,22 @@ module.exports = function (RED) {
         });
         client.on('disconnect', statusConnecting);
         client.on('no_response', statusNoResponse);
+        client.on('error', onError);
 
         this.on('input', function (msg) {
-            if (typeof msg.payload === 'object')
-                client.setProperties(msg.payload);
-            else client.setProperty(msg.topic, msg.payload);
+            if (typeof msg.payload === 'object') {
+                client.setProperties(msg.payload).catch(onError);
+            } else {
+                client.setProperty(msg.topic, msg.payload).catch(onError);
+            }
         });
 
         this.on('close', function () {
-            client.disconnect();
+            client.disconnect().catch(onError);
             client = null;
         });
+
+        statusConnecting();
     }
 
     RED.nodes.registerType('gree-hvac', GreeHvacNode);
