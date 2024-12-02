@@ -22,12 +22,12 @@
     "gree-hvac-client": "^2.1.0"
   },
   "devDependencies": {
-    "eslint": "^9.16.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-jsdoc": "^50.6.0",
-    "eslint-plugin-prettier": "^5.2.1",
-    "prettier": "^3.4.1",
-    "semantic-release": "^24.2.0"
+    "eslint": "^8.40.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-jsdoc": "^44.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.8",
+    "semantic-release": "^21.0.2"
   },
   "repository": {
     "type": "git",
