@@ -16,7 +16,9 @@
     }
   },
   "scripts": {
-    "lint": "eslint ./"
+    "lint": "eslint ./",
+    "nd": "node-red -u sandbox",
+    "watch": "npm-watch nd"
   },
   "dependencies": {
     "gree-hvac-client": "^2.1.0"
@@ -26,11 +28,15 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-jsdoc": "^44.1.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "npm-watch": "^0.13.0",
     "prettier": "^2.8.8",
     "semantic-release": "^21.0.2"
   },
   "repository": {
     "type": "git",
     "url": "git@github.com:inwaar/node-red-contrib-gree-hvac.git"
+  },
+  "watch": {
+    "nd": "gree-hvac/**/*.*"
   }
 }
