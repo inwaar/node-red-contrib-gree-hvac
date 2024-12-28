@@ -16,7 +16,7 @@ module.exports = function (RED) {
             host: device.host,
             pollingInterval: pollingInterval,
             pollingTimeout: pollingInterval / 2,
-            debug: config.debug,
+            logLevel: config.logLevel,
         });
 
         const statusConnected = () => {

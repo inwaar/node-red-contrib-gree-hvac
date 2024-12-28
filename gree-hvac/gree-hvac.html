@@ -3,10 +3,10 @@
         category: 'devices',
         color: '#98cecf',
         defaults: {
-            name: {value: "Gree HVAC"},
-            device: {value: "", type: "gree-hvac-config", required: true},
-            interval: {value: "3", required: true},
-            debug: {value: false}
+            name: { value: "Gree HVAC" },
+            device: { value: "", type: "gree-hvac-config", required: true },
+            interval: { value: "3", required: true },
+            logLevel: { value: "error", required: true }
         },
         inputs: 1,
         outputs: 2,
@@ -34,8 +34,13 @@
     </div>
 
     <div class="form-row">
-        <label for="node-input-debug"><i class="icon-tag"></i> Debug</label>
-        <input type="checkbox" id="node-input-debug">
+        <label for="node-input-logLevel"><i class="icon-tag"></i> Log-level</label>
+        <select id="node-input-logLevel">
+            <option value="error">Error</option>
+            <option value="warn">Warn</option>
+            <option value="info">Info</option>
+            <option value="debug">Debug</option>
+        </select>
     </div>
 </script>
 
