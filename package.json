@@ -21,7 +21,7 @@
     "watch": "npm-watch nd"
   },
   "dependencies": {
-    "gree-hvac-client": "^2.1.0"
+    "gree-hvac-client": "^2.2.0"
   },
   "devDependencies": {
     "eslint": "^8.40.0",
